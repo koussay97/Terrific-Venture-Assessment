@@ -1,0 +1,37 @@
+{
+  "status": 200,
+  "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI4YmVhMGIzOS1mOTQxLTQ0ZjgtOWM0OC04ZTFlYWZjY2FkOGEiLCJpYXQiOjE2NTk4NjgxNzIsImV4cCI6MTY1OTg3MTc3Mn0.XDLr_RE6CWBnuDH4cl-cPuiKfHGHQB_qYbnHgbNxHMg",
+  "refreshToken": "8WB8K7NScdX68sW2",
+  "user": {
+    "id": "8bea0b39-f941-44f8-9c48-8e1eafccad8a",
+    "isArchived": false,
+    "createDateTime": "2022-05-30T10:24:48.797Z",
+    "lastChangedDateTime": "2022-08-07T04:50:14.273Z",
+    "deletedAt": null,
+    "internalComment": null,
+    "name": "Yassine B",
+    "phoneNumber": "+21693252427",
+    "profilePictue": null,
+    "isApproved": true,
+    "refreshToken": "sztyC2aKTAR9RlPH",
+    "refreshtokenexpires": "2022-08-14T04:50:14.272+00:00",
+    "roles": "companyadmin",
+    "branch": null
+  },
+  "company": {
+    "id": "472e17df-dafc-438e-af2f-9dc1ff47733f",
+    "isArchived": false,
+    "createDateTime": "2022-05-30T10:25:48.876Z",
+    "lastChangedDateTime": "2022-08-03T11:34:08.749Z",
+    "deletedAt": null,
+    "internalComment": null,
+    "name": "moulin yellow",
+    "logo": "https://gearni.sfo3.digitaloceanspaces.com/1659523934898-aaaaaaa.jpg",
+    "vatNumber": "https://gearni.sfo3.digitaloceanspaces.com/1659523934898-aaaaaaa.jpg",
+    "commercialLicence": "https://gearni.sfo3.digitaloceanspaces.com/1659523934898-aaaaaaa.jpg",
+    "contactEmail": "theehorizon@gmail.com",
+    "phoneNumber": "93252427",
+    "telephone": "71252624",
+    "location": "  Al-Quwaiyah 19211 19211"
+  }
+}

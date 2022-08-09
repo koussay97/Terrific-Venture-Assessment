@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:terrific_venture_assessment/company_profile_feature/2-domain/2-1-entities/company.dart';
 
 class CompanyModel extends UserCompany {
@@ -30,19 +31,20 @@ class CompanyModel extends UserCompany {
   );
 
   factory CompanyModel.fromJson(Map<String, dynamic> json) {
+    debugPrint('check company --- ');
     return CompanyModel(
-        vatNumber: json['vatNumber'],
-        telephone: json['telephone'],
-        logo: json['logo'],
-        location: json['location'],
-        contactEmail: json['contactEmail'],
-        companyAdminName: json['companyAdminName'],
-        commercialLicence: json['commercialLicence'],
-        id: json['id'],
-        isArchived: json['isArchived'],
-        name: json['name'],
-        phoneNumber: json['phoneNumber'],
-        internalComment: json['internalComment']
+        vatNumber: json['vatNumber']??'',
+        telephone: json['telephone']??'',
+        logo: json['logo']??'',
+        location: json['location']??'',
+        contactEmail: json['contactEmail']??'',
+        companyAdminName: json['companyAdminName']??[],
+        commercialLicence: json['commercialLicence']??'',
+        id: json['id']??'',
+        isArchived: json['isArchived']??false,
+        name: json['name']??'',
+        phoneNumber: json['phoneNumber']??'',
+        internalComment: json['internalComment']??''
     );
   }
 

@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:terrific_venture_assessment/auth_feature/2-domain/2.1-entities/user.dart';
 import 'package:terrific_venture_assessment/company_profile_feature/2-domain/2-1-entities/company.dart';
 import 'package:terrific_venture_assessment/company_profile_feature/3-data/3-2-models/comapny-model.dart';
@@ -22,17 +23,17 @@ class UserModel extends User {
       name: name,
       phoneNumber: phoneNumber);
 
-  factory UserModel.fromJson(Map<String, dynamic> json) {
+  factory UserModel.fromJson(Map<String, dynamic> json, UserCompany cmp) {
+
     return UserModel(
-        role: json['roles'],
-        id: json['id'],
-        isArchived: json['isArchived'],
-        profilePicture: json['profilePicture'],
-        isApproved: json['isApproved'],
-        company: CompanyModel.fromJson(json['company']),
-        // company from json
-        name: json['name'],
-        phoneNumber: json['phoneNumber']
+        role: json['roles']??'',
+        id: json['id']??'',
+        isArchived: json['isArchived']??false,
+        profilePicture: json['profilePicture']??'',
+        isApproved: json['isApproved']??false,
+        company: cmp,
+        name: json['name']??'',
+        phoneNumber: json['phoneNumber']??''
     );
   }
 
