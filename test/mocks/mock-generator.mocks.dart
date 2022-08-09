@@ -77,9 +77,12 @@ class MockAuthRepository extends _i1.Mock implements _i5.AuthRepository {
                           #login, [], {#number: number, #otp: otp}))))
           as _i6.Future<_i2.Either<_i7.Failures, _i8.User>>);
   @override
-  _i6.Future<String> logOut() =>
+  _i6.Future<_i2.Either<_i7.Failures, String>> logOut() =>
       (super.noSuchMethod(Invocation.method(#logOut, []),
-          returnValue: _i6.Future<String>.value('')) as _i6.Future<String>);
+              returnValue: _i6.Future<_i2.Either<_i7.Failures, String>>.value(
+                  _FakeEither_0<_i7.Failures, String>(
+                      this, Invocation.method(#logOut, []))))
+          as _i6.Future<_i2.Either<_i7.Failures, String>>);
 }
 
 /// A class which mocks [AuthLocalDataSource].
@@ -92,20 +95,16 @@ class MockAuthLocalDataSource extends _i1.Mock
   }
 
   @override
-  _i6.Future<void> setTokens(_i9.KeyStorage? collectionName,
-          String? accessToken, String? refreshToken) =>
+  _i6.Future<void> setTokens(_i9.KeyStorage? collectionName, String? token) =>
       (super.noSuchMethod(
-              Invocation.method(
-                  #setTokens, [collectionName, accessToken, refreshToken]),
+              Invocation.method(#setTokens, [collectionName, token]),
               returnValue: _i6.Future<void>.value(),
               returnValueForMissingStub: _i6.Future<void>.value())
           as _i6.Future<void>);
   @override
-  _i6.Future<void> setUser(_i9.KeyStorage? collectionName, String? accessToken,
-          String? refreshToken) =>
-      (super.noSuchMethod(
-              Invocation.method(
-                  #setUser, [collectionName, accessToken, refreshToken]),
+  _i6.Future<void> setUser(
+          _i9.KeyStorage? collectionName, Map<String, dynamic>? user) =>
+      (super.noSuchMethod(Invocation.method(#setUser, [collectionName, user]),
               returnValue: _i6.Future<void>.value(),
               returnValueForMissingStub: _i6.Future<void>.value())
           as _i6.Future<void>);
@@ -116,6 +115,10 @@ class MockAuthLocalDataSource extends _i1.Mock
   @override
   _i6.Future<String> getRefreshToken() =>
       (super.noSuchMethod(Invocation.method(#getRefreshToken, []),
+          returnValue: _i6.Future<String>.value('')) as _i6.Future<String>);
+  @override
+  _i6.Future<String> clearCollection(_i9.KeyStorage? collectionName) =>
+      (super.noSuchMethod(Invocation.method(#clearCollection, [collectionName]),
           returnValue: _i6.Future<String>.value('')) as _i6.Future<String>);
 }
 

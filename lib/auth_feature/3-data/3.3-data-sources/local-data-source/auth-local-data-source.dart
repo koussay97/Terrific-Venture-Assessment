@@ -7,10 +7,10 @@ abstract class AuthLocalDataSource {
   /*-----------------cached Tokens-------------------*/
 
   /// on any [Exception] throws a [CacheExceptions]
-  Future<void> setTokens(KeyStorage collectionName, String accessToken,String refreshToken);
+  Future<void> setTokens(KeyStorage collectionName, String token);
 
   /// on any [Exception] throws a [CacheExceptions]
-  Future<void> setUser(KeyStorage collectionName, String accessToken,String refreshToken);
+  Future<void> setUser(KeyStorage collectionName, Map<String,dynamic>user,);
 
   /// on any [Exception] throws a [CacheExceptions]
   Future<String> getAccessToken();
@@ -18,9 +18,12 @@ abstract class AuthLocalDataSource {
   /// on any [Exception] throws a [CacheExceptions]
   Future<String> getRefreshToken();
 
+  /// on any [Exception] throws a [CacheExceptions]
+  Future<String>clearCollection(KeyStorage collectionName);
 }
 
 enum KeyStorage {
+  user,
   accessToken,
   refreshToken,
 }
@@ -41,14 +44,20 @@ class AuthLocalDataSourceIMPL implements AuthLocalDataSource{
   }
 
   @override
-  Future<void> setTokens(KeyStorage collectionName, String accessToken, String refreshToken) {
+  Future<void> setTokens(KeyStorage collectionName, String token) {
     // TODO: implement setTokens
     throw UnimplementedError();
   }
 
   @override
-  Future<void> setUser(KeyStorage collectionName, String accessToken, String refreshToken) {
+  Future<void> setUser(KeyStorage collectionName, Map<String,dynamic>user) {
     // TODO: implement setUser
+    throw UnimplementedError();
+  }
+
+  @override
+  Future<String> clearCollection(KeyStorage collectionName) {
+    // TODO: implement clearCollection
     throw UnimplementedError();
   }
 
