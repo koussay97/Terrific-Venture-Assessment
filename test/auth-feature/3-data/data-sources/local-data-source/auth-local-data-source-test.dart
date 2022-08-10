@@ -6,7 +6,7 @@ import 'package:mockito/mockito.dart';
 import 'package:terrific_venture_assessment/auth_feature/3-data/3.2-models/user-model.dart';
 import 'package:terrific_venture_assessment/auth_feature/3-data/3.3-data-sources/local-data-source/auth-local-data-source.dart';
 import 'package:terrific_venture_assessment/company_profile_feature/3-data/3-2-models/comapny-model.dart';
-import 'package:terrific_venture_assessment/core/errors/failures/exceptions.dart';
+
 
 import '../../../../fixtures/fixture-reader.dart';
 import '../../../../mocks/mock-generator.mocks.dart';
