@@ -2,10 +2,14 @@
 
 
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:terrific_venture_assessment/auth_feature/1-presentation/1.1-custom-widgets/custom-btn.dart';
 import 'package:terrific_venture_assessment/auth_feature/1-presentation/1.1-custom-widgets/custom-logo.dart';
+import 'package:terrific_venture_assessment/auth_feature/1-presentation/1.3-logic-component/auth-viewModel.dart';
+import 'package:terrific_venture_assessment/company_profile_feature/1-presentation/1-2-screens/company-profile-screen.dart';
 
 import '../1.1-custom-widgets/custom-login-form.dart';
+import '../1.1-custom-widgets/custom_snack_bar.dart';
 
 
 class LoginScreen extends StatefulWidget {
@@ -76,7 +80,18 @@ class _LoginScreenState extends State<LoginScreen> {
                       LogoWidget(deviceWidth: deviceWidth),
                       SizedBox(height: deviceWidth*0.2,),
                       const CustomLoginForm(),
-                      CustomBtn(deviceWidth: deviceWidth,onTapBtn: (){},label: 'Login'),
+                      CustomBtn(deviceWidth: deviceWidth,onTapBtn: ()async{
+                        var result = await context.read<AuthViewModel>().login();
+                        result.fold(
+                          (l) {    
+                            ScaffoldMessenger.of(context).showSnackBar(
+                              customSnackBar(deviceWidth: deviceWidth,context: context,errorMessage: l.errorMessage,)
+                          );},
+                          (r) {
+                            Navigator.push(context, MaterialPageRoute(builder: (_)=>const CompanyProfileScreen()));
+                          },
+                        );
+                      },label: 'Login'),
                     ],
 
                   ),

@@ -25,7 +25,7 @@ void main() {
   late int nonValidLoginOtp;
   setUp(() {
     repository = MockAuthRepository();
-    useCase     = LoginUseCase(repository);
+    useCase     = LoginUseCase(repository: repository);
 
     validLoginOtp    = 123456;
     validLoginNumber = '+21632154';

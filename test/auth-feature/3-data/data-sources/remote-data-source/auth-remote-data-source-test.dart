@@ -26,20 +26,20 @@ LoginInterceptor interceptor;
 late String loginData;
 // don't run this test still needs work
   setUpAll(() async{
-    localDataSource= MockAuthLocalDataSource();
+    localDataSource = MockAuthLocalDataSource();
     dio= MockDio();
-    interceptor=LoginInterceptor(localDataSource: localDataSource);
-    remoteDataSource=AuthRemoteDataSourceIMPL(localDataSource: localDataSource,dio: dio,interceptor: interceptor);
+    interceptor = LoginInterceptor(localDataSource: localDataSource);
+    remoteDataSource = AuthRemoteDataSourceIMPL(localDataSource: localDataSource,dio: dio,interceptor: interceptor);
 
     data = json.decode(fixtureReader('login-fixture.json'));
      loginData =json.encode( {
       'phoneNumber':'phoneNumber',
       'otp':123
     });
-    req = dio.request('http://142.93.112.93:3000/auth/login/verify',data:loginData,options: Options(method: 'post',) );
-    requestOptions= req.requestOptions;
+    //req = dio.request('http://142.93.112.93:3000/auth/login/verify',data:loginData,options: Options(method: 'post',) );
+   // requestOptions= req.requestOptions;
 
-    response= Response(statusCode: 200,data: data,requestOptions:requestOptions );
+   // response= Response(statusCode: 200,data: data,requestOptions:requestOptions );
 
     user = UserModel.fromJson(data['user'],
         CompanyModel.fromJson(data['company']));
@@ -50,19 +50,24 @@ late String loginData;
     test('should cache data locally on status code 200 + return userModel',
         () async {
         // arrange
-        when(dio.post('http://142.93.112.93:3000/auth/login/verify',data: loginData)).thenAnswer((invocation) async {
-          debugPrint('${invocation.memberName}----- hi');
+        when(remoteDataSource.dioInstance.post(any,data: loginData)).thenAnswer((invocation) async {
+         // debugPrint('${invocation.memberName}----- hi');
           return Response(
             statusCode: 200,
             data: data,
-              requestOptions: requestOptions);
+              requestOptions: RequestOptions(path: 'http://142.93.112.93:3000/auth/login/verify'));
             });
 
+
         // act
+
         var result = await remoteDataSource.login('phoneNumber', 123);
         // assert
-        verify(dio.interceptors);
-          //expect(result, user);
+
+          verify(localDataSource.setUser(KeyStorage.user, any));
+          verify(localDataSource.setTokens(KeyStorage.accessToken, any));
+          verify(localDataSource.setTokens(KeyStorage.refreshToken, any));
+          expect(result, user);
         });
 
     test('should throw server Exception whenever status code =! 200',

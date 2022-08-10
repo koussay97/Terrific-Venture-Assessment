@@ -15,7 +15,7 @@ import 'package:terrific_venture_assessment/core/utils/custom-validators/custom_
 class LoginUseCase implements BaseUseCase<User, Params> {
   final AuthRepository repository;
 
-  LoginUseCase(this.repository);
+  LoginUseCase({required this.repository});
 
   @override
   Future<Either<Failures, User>> call(Params p) async {

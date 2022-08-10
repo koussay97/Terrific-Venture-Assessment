@@ -2,6 +2,8 @@
 import 'dart:convert';
 
 import 'package:dio/dio.dart';
+import 'package:terrific_venture_assessment/company_profile_feature/2-domain/2-1-entities/company.dart';
+import 'package:terrific_venture_assessment/company_profile_feature/3-data/3-2-models/comapny-model.dart';
 
 import '../../3.2-models/user-model.dart';
 import 'package:terrific_venture_assessment/core/errors/failures/exceptions.dart';
@@ -48,8 +50,8 @@ static String endpoint='http://142.93.112.93:3000';
      'phoneNumber':phoneNumber,
      'otp':otp
    });
-    var result = await dio.post('$endpoint/auth/login/verify',data: data,);
-    return UserModel.fromJson(result.data['user'], result.data['company']);
+    var result = await dioInstance.post('$endpoint/auth/login/verify',data: data,);
+    return UserModel.fromJson(result.data['user'], CompanyModel.fromJson(result.data['company']));
   }
 
 }

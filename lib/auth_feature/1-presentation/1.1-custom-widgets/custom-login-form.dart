@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:terrific_venture_assessment/auth_feature/1-presentation/1.3-logic-component/auth-viewModel.dart';
 
 import '../../../core/shared/widgets/custom-text-field.dart';
 
@@ -47,7 +49,9 @@ class _CustomLoginFormState extends State<CustomLoginForm> {
         controller: _phoneNumberController,
         borderColor: Colors.white,
         hintText: 'login number',
-        validateField: () {},
+        validateField: () {
+          context.read<AuthViewModel>().setLoginNumber(_phoneNumberController.text);
+        },
         focusNode:_phoneNumberNode,
       ),
       SizedBox(height:deviceWidth*0.1,),
@@ -55,7 +59,9 @@ class _CustomLoginFormState extends State<CustomLoginForm> {
         controller: _otpController,
         borderColor: Colors.white,
         hintText: 'otp',
-        validateField: () {},
+        validateField: () {
+          context.read<AuthViewModel>().setOtp(int.parse(_otpController.text));
+        },
         focusNode:_otpNode,
       ),
       SizedBox(height:deviceWidth*0.1,),
