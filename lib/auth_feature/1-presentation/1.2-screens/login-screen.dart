@@ -85,7 +85,7 @@ class _LoginScreenState extends State<LoginScreen> {
                         result.fold(
                           (l) {    
                             ScaffoldMessenger.of(context).showSnackBar(
-                              customSnackBar(deviceWidth: deviceWidth,context: context,errorMessage: l.errorMessage,)
+                              customSnackBar(deviceWidth: deviceWidth,context: context,errorMessage: l.errorMessage!,)
                           );},
                           (r) {
                             Navigator.push(context, MaterialPageRoute(builder: (_)=>const CompanyProfileScreen()));

@@ -60,7 +60,7 @@ class _CustomLoginFormState extends State<CustomLoginForm> {
         borderColor: Colors.white,
         hintText: 'otp',
         validateField: () {
-          context.read<AuthViewModel>().setOtp(int.parse(_otpController.text));
+          context.read<AuthViewModel>().setOtp(_otpController.text);
         },
         focusNode:_otpNode,
       ),

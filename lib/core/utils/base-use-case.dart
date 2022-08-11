@@ -6,11 +6,15 @@ abstract class BaseUseCase<Type,Params>{
   Future<Either<Failures,Type>>call(Params params);
 }
 
+
+
+
 class Params extends Equatable{
    String? login;
    int? otp;
    Map<String,dynamic>? data;
-  Params.login( {required this.login,required this.otp});
+
+  Params.login({required this.login,required this.otp});
   Params.data({required this.data});
   Params.nullParams();
 

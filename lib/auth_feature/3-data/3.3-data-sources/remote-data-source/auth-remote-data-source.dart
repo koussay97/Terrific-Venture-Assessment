@@ -47,12 +47,17 @@ static String endpoint='http://142.93.112.93:3000';
   Future<UserModel> login(String phoneNumber, int otp)async {
 
    var data =json.encode( {
-     'phoneNumber':phoneNumber,
-     'otp':otp
+     'phoneNumber':'+21693252427',//phoneNumber,
+     'otp':'123456',//otp
    });
     var result = await dioInstance.post('$endpoint/auth/login/verify',data: data,);
-    return UserModel.fromJson(result.data['user'], CompanyModel.fromJson(result.data['company']));
-  }
+    try {
+      return UserModel.fromJson(
+          result.data['user'], CompanyModel.fromJson(result.data['company']));
+    }catch(e){
+      throw ServerExceptions();
+    }
+ }
 
 }
 class LoginInterceptor extends Interceptor{

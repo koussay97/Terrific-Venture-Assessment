@@ -32,6 +32,8 @@ class LoginUseCase implements BaseUseCase<User, Params> {
   // params validation before forwarding the call to the repository
 
   Either<ValidationFailures, bool> validLoginParams(Params p) {
+    debugPrint(p.login);
+    debugPrint(p.otp.toString());
     var r1 = CustomValidator.isNumberValid(p.login!);
     var r2 = CustomValidator.isOtpValid(p.otp!.toString());
 
